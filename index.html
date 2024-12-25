@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F.J.T.</title>
+    
+    <!-- <script type="module" src="firebase.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    
+    <!-- Meta for SEO and Social Sharing -->
+    <meta name="description" content="FJT: Calculateur financier pour budget, CELI, intérêts composés, hypothèque et impôts">
+    <meta property="og:title" content="FJT - Calculateur Financier">
+    <meta property="og:description" content="Outils de calcul financier pour budget, CELI, intérêts composés, hypothèque et impôts">
+    <meta property="og:image" content="icone.png">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_CA">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="FJT - Calculateur Financier">
+    <meta name="twitter:description" content="Outils de calcul financier pour budget, CELI, intérêts composés, hypothèque et impôts">
+    <meta name="twitter:image" content="icone.png">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" href="icone.png">
+    <link rel="apple-touch-icon" href="icone.png">
+
+    <!-- Ajouter après les autres liens CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold fs-4" href="#" onclick="openPage('Home')">F.J.T.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto" id="navMenu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="openPage('Home')">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="openPage('Budget')">Budget</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="openPage('CELI')">CÉLI</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="openPage('CI')">Intérêts composés</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="openPage('Mortgage')">Prêt maison</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="openPage('Tax')">Impôts des particuliers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#helpModal">Aide</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#glossaryModal">Glossaire</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>  
+
+    <div id="Home" class="content">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="hero-title">Propulsez vos finances</h1>
+                        <p class="hero-subtitle">Des outils puissants pour des décisions financières éclairées</p>
+                        <div class="hero-features">
+                            <div class="feature-item">
+                                <i class="bi bi-check-circle-fill"></i>
+                                <span>Plusieurs outils et calculateurs</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="bi bi-shield-check"></i>
+                                <span>Résultats adaptés aux résidents du Québec</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="bi bi-graph-up"></i>
+                                <span>Visualisations dynamiques et explicatives</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="hero-image">
+                            <i class="bi bi-calculator-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools Section -->
+        <div class="container mt-3">
+            <h2 class="tools-title text-center mb-4">Nos outils financiers</h2>
+            <div class="row g-4">
+                <!-- Calculateur de Budget -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm bg-white" onclick="openPage('Budget')" style="cursor:pointer;">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title d-flex align-items-center">
+                                <i class="bi bi-calculator me-2"></i>
+                                Budget
+                            </h5>
+                            <p class="card-text text-muted">Planifiez votre budget mensuel facilement.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Calculateur de CÉLI -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm" onclick="openPage('CELI')" style="cursor:pointer; border-radius: 8px;">
+                        <div class="card-body">
+                            <h5 class="card-title">CÉLI <i class="bi bi-piggy-bank-fill"></i> </h5>
+                            <p class="card-text">Calculez vos contributions et la croissance de votre CÉLI.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Calculateur d'Intérêt -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm" onclick="openPage('CI')" style="cursor:pointer; border-radius: 8px;">
+                        <div class="card-body">
+                            <h5 class="card-title">Intérêts composés <i class="bi bi-graph-up"></i> </h5>
+                            <p class="card-text">Découvrez le pouvoir de l'intérêt composé.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Calculateur hypothécaire -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm" onclick="openPage('Mortgage')" style="cursor:pointer; border-radius: 8px;">
+                        <div class="card-body">
+                            <h5 class="card-title">Prêt maison <i class="bi bi-house-fill"></i></h5>
+                            <p class="card-text">Calculez vos paiements hypothécaires et plus encore.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Calculateur d'impôts -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm" onclick="openPage('Tax')" style="cursor:pointer; border-radius: 8px;">
+                        <div class="card-body">
+                            <h5 class="card-title">Impôts des particuliers <i class="bi bi-cash-stack"></i></h5>
+                            <p class="card-text">Estimez vos impôts fédéraux et provinciaux.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="Budget" class="content">
+        <div class="container">
+            <h3 class="fw-bold text-center mt-3">Budget</h3>
+            <p class="text-center mb-4">
+                Planifiez et analysez votre budget mensuel en détail.
+                <a href="#" data-bs-toggle="modal" data-bs-target="#helpModal" data-section="budget-help" class="text-decoration-none">
+                    En savoir plus sur la gestion budgétaire.
+                </a>
+            </p>
+            
+            <form id="budgetForm">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Revenus</th>
+                            <th>Mensuel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Revenus d'emploi</td>
+                            <td><input type="number" id="salaireInput" class="form-control revenu-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Revenus d'entreprise</td>
+                            <td><input type="number" id="entrepriseInput" class="form-control revenu-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Revenus de biens</td>
+                            <td><input type="number" id="biensInput" class="form-control revenu-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr class="table-primary">
+                            <td><strong>Total revenus</strong></td>
+                            <td><strong><span id="totalRevenus">0</span></strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td> <!-- Empty row for spacing -->
+                        </tr>
+                        <tr class="thead-dark">
+                            <th>Dépenses</th>
+                            <th>Mensuel</th>
+                        </tr>
+                        <tr>
+                            <td>Logement</td>
+                            <td><input type="number" id="loyerInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Automobile</td>
+                            <td><input type="number" id="automobileInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Essence</td>
+                            <td><input type="number" id="essenceInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Transport</td>
+                            <td><input type="number" id="transportInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Assurance santé/dentaire</td>
+                            <td><input type="number" id="assuranceSanteInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Assurance automobile</td>
+                            <td><input type="number" id="assuranceAutoInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Assurance habitation</td>
+                            <td><input type="number" id="assuranceHabitationInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Énergie/HQ</td>
+                            <td><input type="number" id="hydroQuebecInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Cellulaire</td>
+                            <td><input type="number" id="cellulaireInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Internet</td>
+                            <td><input type="number" id="internetInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Épicerie</td>
+                            <td><input type="number" id="epicerieInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Médicaments</td>
+                            <td><input type="number" id="medicamentsInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Restaurants</td>
+                            <td><input type="number" id="restaurantsInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Divertissements</td>
+                            <td><input type="number" id="divertissementsInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Cadeaux</td>
+                            <td><input type="number" id="cadeauxInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Abonnements mensuels</td>
+                            <td><input type="number" id="abonnementsInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>CELI</td>
+                            <td><input type="number" id="celiInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>REER</td>
+                            <td><input type="number" id="reerInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Comptes non-enregistrés</td>
+                            <td><input type="number" id="comptesAutoGereInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Prêt/Dette</td>
+                            <td><input type="number" id="pretDetteInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr>
+                            <td>Autres</td>
+                            <td><input type="number" id="autresDepensesInput" class="form-control depense-input" value="0" onchange="updateTotals()"></td>
+                        </tr>
+                        <tr class="table-danger">
+                            <td><strong>Total dépenses</strong></td>
+                            <td><strong><span id="totalDepenses">0</span></strong></td>
+                        </tr>
+                        <tr class="table-success">
+                            <td><strong>Argent disponible</strong></td>
+                            <td><strong><span id="argentDisponible">0</span></strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="d-flex justify-content-center mt-4">
+                    <button type="button" class="btn btn-reset btn-lg" onclick="resetBudget()">Réinitialiser</button>
+                </div>
+            </form>
+            
+            <div class="calculator-result mt-4"></div>
+        </div>
+    </div>
+
+    <div id="CELI" class="content">
+        <div class="container">
+            <h3 class="fw-bold text-center mt-3">CÉLI</h3>
+            <p class="text-center mb-4">
+                Estimez votre plafond de cotisation CÉLI en fonction de votre âge et de vos transactions.
+                <a href="#" data-bs-toggle="modal" data-bs-target="#helpModal" data-section="celi-help" class="text-decoration-none">
+                    En savoir plus sur le CÉLI.
+                </a>
+            </p>
+            <form id="celiForm">
+                <div class="mb-3">
+                    <label for="birthYear" class="form-label"><strong>Année de naissance</strong></label>
+                    <select class="form-select" id="birthYear">
+                        <!-- Les options seront générées dynamiquement par JavaScript -->
+                    </select>
+                    <small class="form-text text-muted">L'année de votre naissance détermine quand vous avez commencé à accumuler des droits de cotisation CELI.</small>
+                </div>
+                <div class="mb-3">
+                    <label for="deposit" class="form-label"><strong>Cotisation ($)</strong></label>
+                    <input type="number" class="form-control" id="deposit" placeholder="Ex: 50 000">
+                    <small class="form-text text-muted">Le montant total que vous avez déposé dans votre CELI jusqu'à présent.</small>
+                </div>
+                <div class="mb-3">
+                    <label for="withdrawal" class="form-label"><strong>Retrait ($)</strong></label>
+                    <input type="number" class="form-control" id="withdrawal" placeholder="Ex: 10 000">
+                    <small class="form-text text-muted">Le montant total que vous avez retiré de votre CELI jusqu'à présent.</small>
+                </div>
+                <div class="d-flex justify-content-center mt-4">
+                    <button type="button" class="btn btn-calculate btn-lg me-2" onclick="calculateCELI()">Calculer</button>
+                    <button type="button" class="btn btn-reset btn-lg" onclick="resetCELI()">Réinitialiser</button>
+                </div>
+            </form>
+            <div class="calculator-result mt-4"></div>
+        </div>
+    </div>
+      
+    <div id="CI" class="content mb-5">
+        <div class="container">
+            <h3 class="fw-bold text-center mt-3">Intérêts composés</h3>
+            <p class="text-center mb-4">
+                Découvrez la puissance des intérêts composés et planifiez votre avenir financier.
+                <a href="#" data-bs-toggle="modal" data-bs-target="#helpModal" data-section="compound-help" class="text-decoration-none">
+                    En savoir plus sur les intérêts composés.
+                </a>
+            </p>
+            <form id="compoundInterestForm">
+                <div class="mb-3">
+                    <label for="principal" class="form-label"><strong>Capital initial ($)</strong></label>
+                    <input type="number" class="form-control" id="principal" placeholder="Ex: 100 000">
+                    <small class="form-text text-muted">Le montant representant le capital de départ.</small>
+                </div>
+                <div class="mb-3">
+                    <label for="rate" class="form-label"><strong>Taux de rendement annuel (%)</strong></label>
+                    <input type="number" step="0.01" class="form-control" id="rate" placeholder="Ex: 5.99">
+                    <small class="form-text text-muted">Le taux de croissance annuel moyen.</small>
+                </div>
+                <div class="mb-3">
+                    <label for="time" class="form-label"><strong>Durée de l'investissement (années)</strong></label>
+                    <input type="number" class="form-control" id="time" placeholder="Nombre d'années">
+                    <small class="form-text text-muted">La période pendant laquelle vous laisserez votre argent investi.</small>
+                </div>
+                <div class="mb-3">
+                    <label for="newContribution" class="form-label"><strong>Contributions périodiques ($/période)</strong></label>
+                    <input type="number" class="form-control" id="newContribution" placeholder="Ex: 1 000">
+                    <small class="form-text text-muted">Le montant que vous prévoyez d'ajouter périodiquement.</small>
+                </div>
+                <div class="mb-3">
+                    <label for="frequency" class="form-label"><strong>Fréquence des contributions :</strong></label>
+                    <select class="form-select" id="frequency">
+                        <option value="monthly">Mensuelle</option>
+                        <option value="quarterly">Trimestrielle</option>
+                        <option value="semiannually">Semi-annuelle</option>
+                        <option value="annually">Annuelle</option>
+                    </select>
+                    <small class="form-text text-muted">À quelle fréquence vous effectuerez vos contributions régulières.</small>
+                </div>
+                <div class="d-flex justify-content-center mt-4">
+                    <button type="button" class="btn btn-calculate btn-lg me-2" onclick="calculateCompoundInterest()">Calculer</button>
+                    <button type="button" class="btn btn-reset btn-lg" onclick="resetCompoundInterest()">Réinitialiser</button>
+                </div>
+            </form>
+            <div class="calculator-result mt-4"></div>
+            <div class="chart-container">
+                <canvas id="compoundInterestChart" class="mt-4"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <div id="Mortgage" class="content">
+        <div class="container">
+            <h3 class="fw-bold text-center mt-3">Prêt maison</h3>
+            <p class="text-center mb-4">
+                Estimez vos paiements hypothécaires et les coûts associés.
+                <a href="#" data-bs-toggle="modal" data-bs-target="#helpModal" data-section="mortgage-help" class="text-decoration-none">
+                    En savoir plus sur les prêts hypothécaires.
+                </a>
+            </p>
+            
+            <form id="mortgageForm">
+                <div class="mb-3">
+                    <label for="price" class="form-label"><strong>Prix de la propriété ($)</strong></label>
+                    <input type="number" class="form-control" id="price" min="0" step="1000" placeholder="Ex: 300 000">
+                    <small class="form-text text-muted">Le prix d'achat de la propriété.</small>
+                </div>
+
+                <div class="mb-3">
+                    <label for="downPayment" class="form-label"><strong>Mise de fonds ($)</strong></label>
+                    <input type="number" class="form-control" id="downPayment" min="0" step="1000" placeholder="Ex: 60 000">
+                    <small class="form-text text-muted" id="downPaymentPercentage"></small>
+                </div>
+
+                <div class="mb-3">
+                    <label for="interestRate" class="form-label"><strong>Taux d'intérêt annuel (%)</strong></label>
+                    <input type="number" class="form-control" id="interestRate" min="0" step="0.01" placeholder="Ex: 5.99">
+                    <small class="form-text text-muted">Utilisez le point (.) comme séparateur décimal</small>
+                </div>
+
+                <div class="mb-3">
+                    <label for="amortization" class="form-label"><strong>Période d'amortissement</strong></label>
+                    <select class="form-select" id="amortization">
+                        <option value="25">25 ans</option>
+                        <option value="20">20 ans</option>
+                        <option value="15">15 ans</option>
+                        <option value="10">10 ans</option>
+                    </select>
+                    <small class="form-text text-muted">La durée totale du prêt hypothécaire.</small>
+                </div>
+
+                <div class="mb-3">
+                    <label for="city" class="form-label"><strong>Ville</strong></label>
+                    <select class="form-select" id="city">
+                        <option value="">Sélectionnez une ville</option>
+                        <option value="montreal">Montréal</option>
+                        <option value="longueuil">Longueuil</option>
+                        <option value="brossard">Brossard</option>
+                    </select>
+                    <small class="form-text text-muted">Pour le calcul des droits de mutation.</small>
+                </div>
+
+                <div class="d-flex justify-content-center mt-4">
+                    <button type="button" class="btn btn-calculate btn-lg me-2" onclick="calculateMortgage()">Calculer</button>
+                    <button type="button" class="btn btn-reset btn-lg" onclick="resetMortgage()">Réinitialiser</button>
+                </div>
+            </form>
+            
+            <div class="calculator-result mt-4"></div>
+        </div>
+    </div>
+
+    <div id="Tax" class="content">
+        <div class="container">
+            <h3 class="fw-bold text-center mt-3">Impôts des particuliers</h3>
+            <p class="text-center mb-4">
+                Estimez vos impôts fédéraux et provinciaux pour l'année en cours.
+                <a href="#" data-bs-toggle="modal" data-bs-target="#helpModal" data-section="tax-help" class="text-decoration-none">
+                    En savoir plus sur la fiscalité.
+                </a>
+            </p>
+            
+            <form id="taxForm">
+                <div class="mb-3">
+                    <label for="employmentIncome" class="form-label"><strong>Revenu d'emploi ($)</strong></label>
+                    <input id="employmentIncome" type="number" class="form-control" placeholder="Ex: 75 000">
+                    <small class="form-text text-muted">Votre revenu d'emploi brut annuel.</small>
+                </div>
+
+                <div class="mb-3">
+                    <label for="capitalGains" class="form-label"><strong>Gains en capital ($)</strong></label>
+                    <input id="capitalGains" type="number" class="form-control" placeholder="Ex: 10 000">
+                    <small class="form-text text-muted">Le montant total de vos gains en capital.</small>
+                </div>
+
+                <div class="mb-3">
+                    <label for="determinedDividend" class="form-label"><strong>Dividende déterminé ($)</strong></label>
+                    <input id="determinedDividend" type="number" class="form-control" placeholder="Ex: 5 000">
+                    <small class="form-text text-muted">Dividendes reçus de sociétés canadiennes imposables.</small>
+                </div>
+
+                <div class="mb-3">
+                    <label for="undeterminedDividend" class="form-label"><strong>Dividende non-déterminé ($)</strong></label>
+                    <input id="undeterminedDividend" type="number" class="form-control" placeholder="Ex: 2 000">
+                    <small class="form-text text-muted">Dividendes autres que les dividendes déterminés.</small>
+                </div>
+
+                <div class="mb-3">
+                    <label for="propertyIncome" class="form-label"><strong>Revenu d'entreprise/biens ($)</strong></label>
+                    <input id="propertyIncome" type="number" class="form-control" placeholder="Ex: 12 000">
+                    <small class="form-text text-muted">Revenus de location ou d'entreprise.</small>
+                </div>
+
+                <div class="d-flex justify-content-center mt-4">
+                    <button type="button" class="btn btn-calculate btn-lg me-2" onclick="calculateTotalTax()">Calculer</button>
+                    <button type="button" class="btn btn-reset btn-lg" onclick="resetFields()">Réinitialiser</button>
+                </div>
+            </form>
+
+            <div class="calculator-result mt-4"></div>
+        </div>
+    </div>
+
+    <!-- Modal Aide -->
+    <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true" data-bs-backdrop="true" data-bs-keyboard="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="helpModalLabel">Guide complet</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Table des matières -->
+                    <div class="table-of-contents mb-4">
+                        <h2>Table des matières</h2>
+                        <ul>
+                            <li>
+                                <a href="#budget-help">
+                                    <i class="bi bi-dot"></i>
+                                    Budget Personnel
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#celi-help">
+                                    <i class="bi bi-dot"></i>
+                                    CELI
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#compound-help">
+                                    <i class="bi bi-dot"></i>
+                                    Intérêts Composés
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#mortgage-help">
+                                    <i class="bi bi-dot"></i>
+                                    Prêt Hypothécaire
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#tax-help">
+                                    <i class="bi bi-dot"></i>
+                                    Impôts des Particuliers
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Modifier les sections existantes pour ajouter les IDs -->
+                    <section id="budget-help" class="help-section mb-5">
+                        <h2 class="text-dark mb-4">📊 Budget Personnel</h2>
+                        
+                        <h5 class="mt-4 text-dark">Qu'est-ce qu'un budget?</h5>
+                        <p>Un budget est un outil de planification financière qui vous permet de :</p>
+                        <ul>
+                            <li>Suivre vos revenus et dépenses</li>
+                            <li>Identifier où va votre argent</li>
+                            <li>Planifier vos objectifs financiers</li>
+                            <li>Éviter les dépenses excessives</li>
+                        </ul>
+
+                        <h5 class="mt-4 text-dark">Comment utiliser le calculateur de budget?</h5>
+                        <ol>
+                            <li><strong>Revenus :</strong>
+                                <ul>
+                                    <li>Salaire net mensuel (après impôts)</li>
+                                    <li>Revenus d'entreprise ou de travail autonome</li>
+                                    <li>Revenus locatifs ou de placements</li>
+                                </ul>
+                            </li>
+                            <li><strong>Dépenses fixes :</strong>
+                                <ul>
+                                    <li>Logement (loyer ou hypothèque)</li>
+                                    <li>Services publics (électricité, chauffage)</li>
+                                    <li>Assurances (habitation, auto, vie)</li>
+                                    <li>Télécommunications (téléphone, internet)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Dépenses variables :</strong>
+                                <ul>
+                                    <li>Alimentation (épicerie, restaurants)</li>
+                                    <li>Transport (essence, transport en commun)</li>
+                                    <li>Loisirs et divertissements</li>
+                                    <li>Vêtements et soins personnels</li>
+                                </ul>
+                            </li>
+                            <li><strong>Épargne et investissements :</strong>
+                                <ul>
+                                    <li>CELI (Compte d'Épargne Libre d'Impôt)</li>
+                                    <li>REER (Régime Enregistré d'Épargne-Retraite)</li>
+                                    <li>Comptes non enregistrés</li>
+                                </ul>
+                            </li>
+                        </ol>
+
+                        <div class="alert alert-info mt-4">
+                            <strong>💡 Conseils pour une gestion budgétaire efficace :</strong>
+                            <ul>
+                                <li><strong>Règle des besoins (50-60%)</strong>
+                                    <ul>
+                                        <li>Logement et services publics</li>
+                                        <li>Nourriture et produits essentiels</li>
+                                        <li>Transport de base</li>
+                                        <li>Assurances nécessaires</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Épargne et dette (20-30%)</strong>
+                                    <ul>
+                                        <li>Fonds d'urgence (3-6 mois de dépenses)</li>
+                                        <li>Remboursement des dettes à haut taux d'intérêt</li>
+                                        <li>Épargne retraite (REER, CELI)</li>
+                                        <li>Objectifs à moyen terme</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Dépenses discrétionnaires (10-30%)</strong>
+                                    <ul>
+                                        <li>Loisirs et divertissements</li>
+                                        <li>Restaurants et sorties</li>
+                                        <li>Achats non essentiels</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p class="mb-0"><small>Note : Ces pourcentages sont des guides et peuvent être ajustés selon votre situation personnelle, votre revenu et votre lieu de résidence.</small></p>
+                        </div>
+
+                    </section>
+
+                    <!-- CELI -->
+                    <section id="celi-help" class="help-section mb-5">
+                        <h2 class="text-dark mb-4">💰 CELI (Compte d'Épargne Libre d'Impôt)</h2>
+                        
+                        <h5 class="mt-4 text-dark">Qu'est-ce qu'un CELI?</h5>
+                        <p>Le CELI est un compte d'investissement qui permet de :</p>
+                        <ul>
+                            <li>Faire fructifier votre argent à l'abri de l'impôt.</li>
+                            <li>Retirer des fonds en tout temps sans pénalité.</li>
+                            <li>Réinvestir les montants retirés l'année suivante.</li>
+                            <li>Investir dans différents produits de placement (actions, obligations, CPG).</li>
+                        </ul>
+
+                        <h5 class="mt-4 text-dark">Droits de cotisation annuels</h5>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Années</th>
+                                        <th>Limite annuelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>2009-2012</td><td>5 000$</td></tr>
+                                    <tr><td>2013-2014</td><td>5 500$</td></tr>
+                                    <tr><td>2015</td><td>10 000$</td></tr>
+                                    <tr><td>2016-2018</td><td>5 500$</td></tr>
+                                    <tr><td>2019-2023</td><td>6 000$</td></tr>
+                                    <tr><td>2024</td><td>7 000$</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h5 class="mt-4 text-dark">Comment calculer vos droits de cotisation?</h5>
+                        <p>Vos droits de cotisation totaux = A + B - C + D, où :</p>
+                        <ul>
+                            <li><strong>A</strong> : Droits inutilisés des années précédentes</li>
+                            <li><strong>B</strong> : Nouveaux droits de l'année en cours</li>
+                            <li><strong>C</strong> : Cotisations effectuées cette année</li>
+                            <li><strong>D</strong> : Retraits de l'année précédente</li>
+                        </ul>
+
+                        <div class="alert alert-warning mt-4">
+                            <strong>⚠️ Important :</strong>
+                            <ul>
+                                <li>Les droits commencent à s'accumuler dès vos 18 ans</li>
+                                <li>Une cotisation excédentaire entraîne une pénalité de 1% par mois</li>
+                                <li>Les pertes dans un CELI ne peuvent pas être déduites</li>
+                            </ul>
+                        </div>
+
+                        <h5 class="mt-4 text-dark">Exemple pratique</h5>
+                        <div class="card">
+                            <div class="card-body">
+                                <p><strong>Scénario :</strong> Personne née en 1990</p>
+                                <ul>
+                                    <li>A eu 18 ans en 2008</li>
+                                    <li>Droits commencent en 2009</li>
+                                    <li>En 2024, ses droits totaux sont :
+                                        <ul>
+                                            <li>2009-2012 : 4 × 5 000$ = 20 000$</li>
+                                            <li>2013-2014 : 2 × 5 500$ = 11 000$</li>
+                                            <li>2015 : 10 000$</li>
+                                            <li>2016-2018 : 3 × 5 500$ = 16 500$</li>
+                                            <li>2019-2023 : 5 × 6 000$ = 30 000$</li>
+                                            <li>2024 : 7 000$</li>
+                                            <li><strong>Total : 94 500$</strong></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Intérêts Composés -->
+                    <section id="compound-help" class="help-section mb-5">
+                        <h2 class="text-dark mb-4">📈 Intérêts Composés</h2>
+                        
+                        <h5 class="mt-4 text-dark">Qu'est-ce que l'intérêt composé?</h5>
+                        <p>L'intérêt composé est le concept de gagner des intérêts sur vos intérêts. C'est ce qu'Einstein appelait la "8e merveille du monde".</p>
+
+                        <h5 class="mt-4 text-dark">La formule mathématique</h5>
+                        <p><strong>Montant final = P(1 + r)ⁿ + C[((1 + r)ⁿ - 1)/r]</strong></p>
+                        <p>Où :</p>
+                        <ul>
+                            <li><strong>P</strong> = Capital initial</li>
+                            <li><strong>r</strong> = Taux d'intérêt annuel (en décimal)</li>
+                            <li><strong>n</strong> = Nombre d'années</li>
+                            <li><strong>C</strong> = Contribution périodique</li>
+                        </ul>
+
+                        <h5 class="mt-4 text-dark">Facteurs qui influencent la croissance</h5>
+                        <ol>
+                            <li><strong>Temps d'investissement</strong>
+                                <ul>
+                                    <li>Plus la période est longue, plus l'effet est puissant</li>
+                                    <li>Commencer tôt est crucial</li>
+                                </ul>
+                            </li>
+                            <li><strong>Taux de rendement</strong>
+                                <ul>
+                                    <li>Un taux plus élevé accélère la croissance</li>
+                                    <li>Même 1% de différence peut être significatif sur le long terme</li>
+                                </ul>
+                            </li>
+                            <li><strong>Fréquence des contributions</strong>
+                                <ul>
+                                    <li>Des versements réguliers augmentent le potentiel</li>
+                                    <li>La régularité est plus importante que le montant</li>
+                                </ul>
+                            </li>
+                        </ol>
+
+                        <div class="alert alert-success mt-4">
+                            <strong>💡 Exemples de parcours d'investissement :</strong>
+                            <p>Comparons trois investisseurs avec un rendement de 7% par an :</p>
+                            <ul>
+                                <li><strong>Sophie, 25 ans</strong> - Débute tôt, petit montant :
+                                    <ul>
+                                        <li>Investit 500$/mois de 25 à 65 ans</li>
+                                        <li>Total investi : 240 000$</li>
+                                        <li>Valeur à 65 ans : 1 297 000$</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Marc, 35 ans</strong> - Commence plus tard, montant moyen :
+                                    <ul>
+                                        <li>Investit 750$/mois de 35 à 65 ans</li>
+                                        <li>Total investi : 270 000$</li>
+                                        <li>Valeur à 65 ans : 917 000$</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Julie, 45 ans</strong> - Rattrapage tardif, montant élevé :
+                                    <ul>
+                                        <li>Investit 1 000$/mois de 45 à 65 ans</li>
+                                        <li>Total investi : 240 000$</li>
+                                        <li>Valeur à 65 ans : 464 000$</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p><small>Cette comparaison démontre l'importance de commencer tôt : Sophie investit moins au total que Marc mais termine avec davantage grâce au temps et aux intérêts composés.</small></p>
+                        </div>
+
+                        <h5 class="mt-4 text-dark">Stratégies d'investissement</h5>
+                        <ul>
+                            <li><strong>Investissement périodique</strong>
+                                <ul>
+                                    <li>Répartit le risque dans le temps</li>
+                                    <li>Évite d'essayer de "timer" le marché</li>
+                                    <li>Crée une discipline d'investissement</li>
+                                </ul>
+                            </li>
+                            <li><strong>Réinvestissement des gains</strong>
+                                <ul>
+                                    <li>Maximise l'effet des intérêts composés</li>
+                                    <li>Évite la tentation de dépenser les gains</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <!-- Prêt Hypothécaire -->
+                    <section id="mortgage-help" class="help-section mb-5">
+                        <h2 class="text-dark mb-4">🏠 Prêt Hypothécaire</h2>
+                        
+                        <h5 class="mt-4 text-dark">Concepts fondamentaux</h5>
+                        <ul>
+                            <li><strong>Prix d'achat</strong> : Coût total de la propriété</li>
+                            <li><strong>Mise de fonds</strong> : Montant initial que vous investissez</li>
+                            <li><strong>Prêt hypothécaire</strong> : Montant emprunté</li>
+                            <li><strong>Période d'amortissement</strong> : Durée totale du remboursement</li>
+                        </ul>
+
+                        <h5 class="mt-4 text-dark">Mise de fonds minimale</h5>
+                        <ul>
+                            <li>Prix < 500 000$ : 5% minimum</li>
+                            <li>500 000$ à 999 999$ :
+                                <ul>
+                                    <li>5% sur les premiers 500 000$</li>
+                                    <li>10% sur le reste</li>
+                                </ul>
+                            </li>
+                            <li>1 000 000$ et plus : 20% minimum</li>
+                        </ul>
+
+                        <h5 class="mt-4 text-dark">Assurance prêt hypothécaire (SCHL)</h5>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Mise de fonds</th>
+                                        <th>Prime SCHL</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>5% à 9.99%</td><td>4.00%</td></tr>
+                                    <tr><td>10% à 14.99%</td><td>3.10%</td></tr>
+                                    <tr><td>15% à 19.99%</td><td>2.80%</td></tr>
+                                    <tr><td>20% ou plus</td><td>0%</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h5 class="mt-4 text-dark">Calcul du paiement mensuel</h5>
+                        <p><strong>Formule : PMT = P × (r × (1 + r)ⁿ) / ((1 + r)ⁿ - 1)</strong></p>
+                        <p>Où :</p>
+                        <ul>
+                            <li><strong>PMT</strong> = Paiement mensuel</li>
+                            <li><strong>P</strong> = Principal (montant emprunté)</li>
+                            <li><strong>r</strong> = Taux d'intérêt mensuel (taux annuel ÷ 12)</li>
+                            <li><strong>n</strong> = Nombre total de paiements (années × 12)</li>
+                        </ul>
+
+                        <h5 class="mt-4 text-dark">Droits de mutation (taxe de bienvenue)</h5>
+                        <p>Varie selon la municipalité. Exemple pour Montréal :</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Tranche de valeur</th>
+                                        <th>Taux</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>0$ à 61 500$</td><td>0.5%</td></tr>
+                                    <tr><td>61 500$ à 307 800$</td><td>1.0%</td></tr>
+                                    <tr><td>307 800$ à 552 300$</td><td>1.5%</td></tr>
+                                    <tr><td>552 300$ et plus</td><td>2.0%</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="alert alert-info mt-4">
+                            <strong>💡 Conseils pour l'achat d'une propriété :</strong>
+                            <ul>
+                                <li>Visez une mise de fonds de 20% pour éviter l'assurance SCHL</li>
+                                <li>Incluez tous les coûts connexes dans votre budget :
+                                    <ul>
+                                        <li>Inspection</li>
+                                        <li>Notaire</li>
+                                        <li>Déménagement</li>
+                                        <li>Rénovations initiales</li>
+                                    </ul>
+                                </li>
+                                <li>Gardez une réserve pour les imprévus</li>
+                            </ul>
+                        </div>
+
+                        <h5 class="mt-4 text-dark">Exemple complet</h5>
+                        <div class="card">
+                            <div class="card-body">
+                                <p><strong>Scénario :</strong></p>
+                                <ul>
+                                    <li>Prix d'achat : 400 000$</li>
+                                    <li>Mise de fonds : 40 000$ (10%)</li>
+                                    <li>Taux d'intérêt : 5%</li>
+                                    <li>Amortissement : 25 ans</li>
+                                    <li>Résultats :
+                                        <ul>
+                                            <li>Prime SCHL : 11 160$ (3.10%)</li>
+                                            <li>Montant du prêt : 371 160$</li>
+                                            <li>Paiement mensuel : 2 163$</li>
+                                            <li>Droits de mutation : 4 078$</li>
+                                            <li>Coût initial total : 44 078$</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Impôts -->
+                    <section id="tax-help" class="help-section mb-5">
+                        <h2 class="text-dark mb-4">📑 Impôts des Particuliers</h2>
+                        
+                        <h5 class="mt-4 text-dark">Types de revenus</h5>
+                        <ol>
+                            <li><strong>Revenu d'emploi</strong>
+                                <ul>
+                                    <li>Salaires et traitements</li>
+                                    <li>Commissions</li>
+                                    <li>Avantages imposables</li>
+                                </ul>
+                            </li>
+                            <li><strong>Gains en capital</strong>
+                                <ul>
+                                    <li>50% du profit sur la vente d'investissements</li>
+                                    <li>Actions, obligations, immobilier</li>
+                                </ul>
+                            </li>
+                            <li><strong>Dividendes</strong>
+                                <ul>
+                                    <li>Déterminés : grandes sociétés</li>
+                                    <li>Non déterminés : petites entreprises</li>
+                                </ul>
+                            </li>
+                            <li><strong>Revenus d'entreprise/biens</strong>
+                                <ul>
+                                    <li>Travail autonome</li>
+                                    <li>Location immobilière</li>
+                                    <li>Intérêts</li>
+                                </ul>
+                            </li>
+                        </ol>
+
+                        <h5 class="mt-4 text-dark">Traitement spécial des revenus</h5>
+                        <h6>Gains en capital</h6>
+                        <ul>
+                            <li>Seulement 50% du gain est imposable</li>
+                            <li>Exemple : Gain de 10 000$ = 5 000$ imposable</li>
+                        </ul>
+
+                        <h6>Dividendes déterminés</h6>
+                        <ul>
+                            <li>Majoration de 38%</li>
+                            <li>Crédit d'impôt pour dividendes</li>
+                            <li>Exemple : 1 000$ de dividendes = 1 380$ imposable - crédit</li>
+                        </ul>
+
+                        <h6>Dividendes non déterminés</h6>
+                        <ul>
+                            <li>Majoration de 15%</li>
+                            <li>Crédit d'impôt moins avantageux</li>
+                            <li>Exemple : 1 000$ de dividendes = 1 150$ imposable - crédit</li>
+                        </ul>
+
+                        <h5 class="mt-4 text-dark">Exemple de calcul complet</h5>
+                        <div class="card">
+                            <div class="card-body">
+                                <p><strong>Scénario :</strong></p>
+                                <ul>
+                                    <li>Revenu d'emploi : 75 000$</li>
+                                    <li>Gains en capital : 10 000$ (5 000$ imposable)</li>
+                                    <li>Dividendes déterminés : 2 000$ (2 760$ imposable)</li>
+                                    <li>Revenu total imposable : 82 760$</li>
+                                    <li>Calcul :
+                                        <ul>
+                                            <li>Impôt fédéral (avant abattement) : ≈ 14 500$</li>
+                                            <li>Abattement du Québec (16.5%) : ≈ 2 390$</li>
+                                            <li>Impôt provincial : ≈ 15 000$</li>
+                                            <li>Total des impôts : ≈ 27 110$</li>
+                                            <li>Taux effectif : ≈ 32.8%</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning mt-4">
+                            <strong>⚠️ Important :</strong>
+                            <ul>
+                                <li>Ces calculs sont des estimations</li>
+                                <li>Ne tiennent pas compte des crédits et déductions personnels</li>
+                                <li>Consultez un professionnel pour votre situation spécifique</li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Glossaire -->
+    <div class="modal fade" id="glossaryModal" tabindex="-1" aria-labelledby="glossaryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="glossaryModalLabel">Glossaire Financier</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <!-- Glossaire -->
+                    <dl class="row" id="glossaryList">
+                        <dt class="col-sm-4">Abattement du Québec</dt>
+                        <dd class="col-sm-8">
+                            <p>Réduction de 16.5% de l'impôt fédéral accordée aux résidents du Québec.</p>
+                            <p><strong>Exemple :</strong> Sur un impôt fédéral de 10 000$, l'abattement serait de 1 650$.</p>
+                        </dd>
+                        
+                        <dt class="col-sm-4">Amortissement hypothécaire</dt>
+                        <dd class="col-sm-8">
+                            <p>Période sur laquelle un prêt hypothécaire est remboursé. Plus la période est longue, plus les paiements mensuels sont bas, mais plus on paie d'intérêts au total.</p>
+                            <p><strong>Périodes courantes :</strong> 15, 20, 25 ou 30 ans</p>
+                        </dd>
+                        
+                        <dt class="col-sm-4">Avantages imposables</dt>
+                        <dd class="col-sm-8">
+                            <p>Avantages non monétaires fournis par l'employeur qui doivent être déclarés comme revenu.</p>
+                            <p><strong>Exemples :</strong></p>
+                            <ul>
+                                <li>Usage personnel d'une voiture fournie par l'employeur</li>
+                                <li>Cotisations de l'employeur à un régime privé d'assurance-maladie</li>
+                                <li>Options d'achat d'actions</li>
+                            </ul>
+                        </dd>
+                        
+                        <dt class="col-sm-4">CELI (Compte d'Épargne Libre d'Impôt)</dt>
+                        <dd class="col-sm-8">
+                            <p>Compte d'investissement dont les revenus et les retraits ne sont pas imposables.</p>
+                            <p><strong>Caractéristiques principales :</strong></p>
+                            <ul>
+                                <li>Cotisations avec de l'argent après impôt</li>
+                                <li>Croissance à l'abri de l'impôt</li>
+                                <li>Retraits non imposables</li>
+                                <li>Droits de cotisation récupérables l'année suivante</li>
+                            </ul>
+                        </dd>
+
+                        <dt class="col-sm-4">Dividende déterminé</dt>
+                        <dd class="col-sm-8">
+                            <p>Dividende versé par une société canadienne qui a été imposé au taux général des sociétés (environ 26.5%).</p>
+                            <p><strong>Traitement fiscal :</strong></p>
+                            <ul>
+                                <li>Majoration de 38% du montant reçu</li>
+                                <li>Crédit d'impôt pour dividendes plus avantageux</li>
+                            </ul>
+                        </dd>
+                        
+                        <dt class="col-sm-4">Dividende non déterminé</dt>
+                        <dd class="col-sm-8">
+                            <p>Dividende versé par une société canadienne qui a été imposé au taux réduit des petites entreprises (environ 9%).</p>
+                            <p><strong>Traitement fiscal :</strong></p>
+                            <ul>
+                                <li>Majoration de 15% du montant reçu</li>
+                                <li>Crédit d'impôt pour dividendes moins avantageux</li>
+                            </ul>
+                        </dd>
+                        
+                        <dt class="col-sm-4">Droits de mutation (Taxe de bienvenue)</dt>
+                        <dd class="col-sm-8">
+                            <p>Taxe payée lors de l'achat d'une propriété, calculée selon la valeur de la propriété et variant selon la municipalité.</p>
+                            <p><strong>Calcul (Montréal) :</strong></p>
+                            <ul>
+                                <li>0.5% sur la première tranche de 61 500$</li>
+                                <li>1.0% de 61 500$ à 307 800$</li>
+                                <li>1.5% de 307 800$ à 552 300$</li>
+                                <li>2.0% sur l'excédent</li>
+                            </ul>
+                        </dd>
+
+                        <dt class="col-sm-4">Taux marginal d'imposition</dt>
+                        <dd class="col-sm-8">
+                            <p>Taux d'impôt appliqué sur chaque dollar supplémentaire de revenu gagné dans une tranche d'imposition donnée.</p>
+                            <p><strong>Exemple :</strong></p>
+                            <ul>
+                                <li>Revenu de 60 000$ au Québec :</li>
+                                <li>Les premiers 49 275$ sont imposés à 15%</li>
+                                <li>Les 10 725$ suivants sont imposés à 20%</li>
+                                <li>Le taux marginal est donc 20% pour le prochain dollar gagné</li>
+                            </ul>
+                        </dd>
+
+                        <dt class="col-sm-4">Taux effectif d'imposition</dt>
+                        <dd class="col-sm-8">
+                            <p>Pourcentage moyen d'impôt payé sur l'ensemble du revenu imposable.</p>
+                            <p><strong>Calcul :</strong> (Total des impôts payés ÷ Revenu total) × 100</p>
+                            <p><strong>Exemple :</strong></p>
+                            <ul>
+                                <li>Revenu : 60 000$</li>
+                                <li>Impôts totaux : 12 000$</li>
+                                <li>Taux effectif : (12 000$ ÷ 60 000$) × 100 = 20%</li>
+                            </ul>
+                        </dd>
+
+                        <dt class="col-sm-4">Intérêts composés</dt>
+                        <dd class="col-sm-8">
+                            <p>Phénomène où les intérêts générés par un investissement sont réinvestis pour générer leurs propres intérêts.</p>
+                            <p><strong>Formule :</strong> A = P(1 + r)ⁿ</p>
+                            <ul>
+                                <li>A = Montant final</li>
+                                <li>P = Principal (montant initial)</li>
+                                <li>r = Taux d'intérêt (en décimal)</li>
+                                <li>n = Nombre de périodes</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> 1 000$ à 5% par an pendant 10 ans = 1 628,89$</p>
+                        </dd>
+
+                        <dt class="col-sm-4">Ratio d'endettement</dt>
+                        <dd class="col-sm-8">
+                            <p>Mesure utilisée par les prêteurs pour évaluer votre capacité d'emprunt.</p>
+                            <p><strong>Types :</strong></p>
+                            <ul>
+                                <li>ABD (Amortissement Brut de la Dette) :
+                                    <br>(Paiement hypothécaire + Taxes + Chauffage) ÷ Revenu brut mensuel</li>
+                                <li>ATD (Amortissement Total de la Dette) :
+                                    <br>(ABD + Autres dettes) ÷ Revenu brut mensuel</li>
+                            </ul>
+                            <p><strong>Limites recommandées :</strong> ABD ≤ 32%, ATD ≤ 40%</p>
+                        </dd>
+
+                        <dt class="col-sm-4">Mise de fonds minimale</dt>
+                        <dd class="col-sm-8">
+                            <p>Montant minimal requis pour l'achat d'une propriété au Canada.</p>
+                            <p><strong>Règles :</strong></p>
+                            <ul>
+                                <li>5% pour les premiers 500 000$</li>
+                                <li>10% pour la portion entre 500 000$ et 999 999$</li>
+                                <li>20% pour 1 000 000$ et plus</li>
+                            </ul>
+                            <p><strong>Exemple :</strong> Pour une maison de 600 000$ :</p>
+                            <ul>
+                                <li>25 000$ (5% de 500 000$)</li>
+                                <li>10 000$ (10% de 100 000$)</li>
+                                <li>Total : 35 000$</li>
+                            </ul>
+                        </dd>
+
+                        <dt class="col-sm-4">REER (Régime Enregistré d'Épargne-Retraite)</dt>
+                        <dd class="col-sm-8">
+                            <p>Compte d'épargne-retraite qui offre un report d'impôt.</p>
+                            <p><strong>Caractéristiques :</strong></p>
+                            <ul>
+                                <li>Cotisations déductibles d'impôt</li>
+                                <li>Croissance à l'abri de l'impôt</li>
+                                <li>Retraits imposables comme revenu</li>
+                                <li>Limite de cotisation : 18% du revenu gagné</li>
+                            </ul>
+                            <p><strong>Stratégies :</strong></p>
+                            <ul>
+                                <li>Cotiser quand le revenu est élevé</li>
+                                <li>Retirer quand le revenu est bas</li>
+                                <li>Peut être utilisé pour RAP (Régime d'accession à la propriété)</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/budget.js"></script>
+    <script src="js/celi.js"></script>
+    <script src="js/compound-interest.js"></script>
+    <script src="js/mortgage.js"></script>
+    <script src="js/tax.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+</body>
+</html>

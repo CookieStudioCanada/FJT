@@ -209,7 +209,7 @@ const calculator = {
 
                 <div class="result-total mt-5">
                     <div class="result-row">
-                        <span class="result-label">Total des coûts initiaux :</span>
+                        <span class="result-label">Coûts initiaux :</span>
                         <span class="result-value">${this.formatMoney(data.downPayment + data.welcomeTax)}</span>
                     </div>
                 </div>

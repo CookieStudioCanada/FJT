@@ -47,22 +47,25 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto" id="navMenu">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="openPage('Home')">Accueil</a>
+                        <a class="nav-link" href="#" onclick="openPage('CI')">Intérêts composés</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="openPage('Tax')">Impôts des particuliers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="openPage('TaxCorporate')">Impôts des sociétés</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="openPage('Mortgage')">Prêt maison</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="openPage('DroitMutation')">Droits de mutation</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="openPage('Budget')">Budget</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="openPage('CELI')">CÉLI</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="openPage('CI')">Intérêts composés</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="openPage('Mortgage')">Prêt maison</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="openPage('Tax')">Impôts des particuliers</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#helpModal">Aide</a>
@@ -79,19 +82,10 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <h1 class="hero-title">Propulsez vos finances</h1>
-                        <p class="hero-subtitle">Des outils puissants pour des décisions financières éclairées</p>
                         <div class="hero-features">
                             <div class="feature-item">
                                 <i class="bi bi-check-circle-fill"></i>
-                                <span>Plusieurs outils et calculateurs</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="bi bi-shield-check"></i>
-                                <span>Résultats adaptés aux résidents du Québec</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="bi bi-graph-up"></i>
-                                <span>Visualisations dynamiques et explicatives</span>
+                                <span>Plusieurs outils et calculateurs financiers et fiscaux dont les résultats sont adaptés aux résidents du Québec</span>
                             </div>
                         </div>
                     </div>
@@ -105,54 +99,90 @@
         </div>
 
         <!-- Tools Section -->
-        <div class="container mt-3 mb-5">
+        <div class="container mt-5 mb-5">
             <h2 class="tools-title text-center mb-4">Nos outils financiers</h2>
-            <div class="row g-4 px-lg-4 py-lg-3">
-                <!-- Calculateur de Budget -->
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm bg-white" onclick="openPage('Budget')" style="cursor:pointer;">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title d-flex align-items-center">
-                                <i class="bi bi-calculator me-2"></i>
-                                Budget
-                            </h5>
-                            <p class="card-text text-muted">Planifiez votre budget mensuel facilement.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Calculateur de CÉLI -->
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm" onclick="openPage('CELI')" style="cursor:pointer; border-radius: 8px;">
-                        <div class="card-body">
-                            <h5 class="card-title">CÉLI <i class="bi bi-piggy-bank-fill"></i> </h5>
-                            <p class="card-text">Calculez vos contributions et la croissance de votre CÉLI.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="row g-4">
                 <!-- Calculateur d'Intérêt -->
                 <div class="col-md-4">
-                    <div class="card h-100 shadow-sm" onclick="openPage('CI')" style="cursor:pointer; border-radius: 8px;">
-                        <div class="card-body">
-                            <h5 class="card-title">Intérêts composés <i class="bi bi-graph-up"></i> </h5>
-                            <p class="card-text">Découvrez le pouvoir de l'intérêt composé.</p>
+                    <div class="tool-card" onclick="openPage('CI')">
+                        <div class="tool-card-icon">
+                            <i class="bi bi-graph-up"></i>
                         </div>
-                    </div>
-                </div>
-                <!-- Calculateur hypothécaire -->
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm" onclick="openPage('Mortgage')" style="cursor:pointer; border-radius: 8px;">
-                        <div class="card-body">
-                            <h5 class="card-title">Prêt maison <i class="bi bi-house-fill"></i></h5>
-                            <p class="card-text">Calculez vos paiements hypothécaires et plus encore.</p>
+                        <div class="tool-card-content">
+                            <h5 class="tool-card-title">Intérêts composés</h5>
+                            <p class="tool-card-text">Découvrez le pouvoir de l'intérêt composé.</p>
                         </div>
                     </div>
                 </div>
                 <!-- Calculateur d'impôts -->
                 <div class="col-md-4">
-                    <div class="card h-100 shadow-sm" onclick="openPage('Tax')" style="cursor:pointer; border-radius: 8px;">
-                        <div class="card-body">
-                            <h5 class="card-title">Impôts des particuliers <i class="bi bi-cash-stack"></i></h5>
-                            <p class="card-text">Estimez vos impôts fédéraux et provinciaux.</p>
+                    <div class="tool-card" onclick="openPage('Tax')">
+                        <div class="tool-card-icon">
+                            <i class="bi bi-cash-stack"></i>
+                        </div>
+                        <div class="tool-card-content">
+                            <h5 class="tool-card-title">Impôts des particuliers</h5>
+                            <p class="tool-card-text">Estimez vos impôts fédéraux et provinciaux.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Calculateur d'impôts des sociétés -->
+                <div class="col-md-4">
+                    <div class="tool-card" onclick="openPage('TaxCorporate')">
+                        <div class="tool-card-icon">
+                            <i class="bi bi-building"></i>
+                        </div>
+                        <div class="tool-card-content">
+                            <h5 class="tool-card-title">Impôts des sociétés</h5>
+                            <p class="tool-card-text">Estimez les impôts fédéraux et provinciaux des sociétés.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Calculateur hypothécaire -->
+                <div class="col-md-4">
+                    <div class="tool-card" onclick="openPage('Mortgage')">
+                        <div class="tool-card-icon">
+                            <i class="bi bi-house-fill"></i>
+                        </div>
+                        <div class="tool-card-content">
+                            <h5 class="tool-card-title">Prêt maison</h5>
+                            <p class="tool-card-text">Calculez vos paiements hypothécaires et plus encore.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Calculateur de droits de mutation -->
+                <div class="col-md-4">
+                    <div class="tool-card" onclick="openPage('DroitMutation')">
+                        <div class="tool-card-icon">
+                            <i class="bi bi-gift-fill"></i>
+                        </div>
+                        <div class="tool-card-content">
+                            <h5 class="tool-card-title">Droits de mutation</h5>
+                            <p class="tool-card-text">Estimez les droits de mutation.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Calculateur de Budget -->
+                <div class="col-md-4">
+                    <div class="tool-card" onclick="openPage('Budget')">
+                        <div class="tool-card-icon">
+                            <i class="bi bi-calculator"></i>
+                        </div>
+                        <div class="tool-card-content">
+                            <h5 class="tool-card-title">Budget</h5>
+                            <p class="tool-card-text">Planifiez votre budget mensuel facilement.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Calculateur de CÉLI -->
+                <div class="col-md-4">
+                    <div class="tool-card" onclick="openPage('CELI')">
+                        <div class="tool-card-icon">
+                            <i class="bi bi-piggy-bank-fill"></i>
+                        </div>
+                        <div class="tool-card-content">
+                            <h5 class="tool-card-title">CÉLI</h5>
+                            <p class="tool-card-text">Calculez vos contributions et la croissance de votre CÉLI.</p>
                         </div>
                     </div>
                 </div>
@@ -506,172 +536,75 @@
         </div>
     </div>
 
+    <div id="TaxCorporate" class="content">
+        <div class="container">
+            <h3 class="fw-bold text-center mt-3">Impôts des sociétés</h3>
+            <p class="text-center mb-4">
+                Estimez les impôts fédéraux et provinciaux des sociétés.
+                <a href="#" data-bs-toggle="modal" data-bs-target="#helpModal" data-section="taxCorporate-help" class="text-decoration-none">
+                    En savoir plus sur les impôts des sociétés.
+                </a>
+            </p>
+            <p class="text-center mb-4 text-muted">[En cours de développement...]</p>
+        </div>
+    </div>
+
+    <div id="DroitMutation" class="content">
+        <div class="container">
+            <h3 class="fw-bold text-center mt-3">Droits de mutation</h3>
+            <p class="text-center mb-4">
+                Estimez les droits de mutation pour une propriété.
+                <a href="#" data-bs-toggle="modal" data-bs-target="#helpModal" data-section="droitMutation-help" class="text-decoration-none">
+                    En savoir plus sur les droits de mutation.
+                </a>
+            </p>
+            <p class="text-center mb-4 text-muted">[En cours de développement...]</p>
+        </div>
+    </div>
+
     <!-- Modal Aide -->
     <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true" data-bs-backdrop="true" data-bs-keyboard="true">
         <div class="modal-dialog modal-xl modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="helpModalLabel">Guide complet</h5>
+                    <h5 class="modal-title" id="helpModalLabel">Guide d'utilisation</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!-- Table des matières -->
-                    <div class="table-of-contents mb-4">
-                        <h2>Table des matières</h2>
-                        <ul>
-                            <li>
-                                <a href="#budget-help">
-                                    <i class="bi bi-dot"></i>
-                                    Budget personnel
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#celi-help">
-                                    <i class="bi bi-dot"></i>
-                                    CELI
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#compound-help">
-                                    <i class="bi bi-dot"></i>
-                                    Intérêts composés
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#mortgage-help">
-                                    <i class="bi bi-dot"></i>
-                                    Prêt hypothécaire
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#tax-help">
-                                    <i class="bi bi-dot"></i>
-                                    Impôts des particuliers
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="table-of-contents mb-4 p-4 rounded">
+                        <h2 class="mb-4 text-center">Table des matières</h2>
+                        <div class="toc-links">
+                            <a href="#compound-help" class="toc-item">
+                                <div class="toc-icon">📈</div>
+                                <div class="toc-text">Intérêts composés</div>
+                            </a>
+                            <a href="#tax-help" class="toc-item">
+                                <div class="toc-icon">📑</div>
+                                <div class="toc-text">Impôts des particuliers</div>
+                            </a>
+                            <a href="#taxCorporate-help" class="toc-item">
+                                <div class="toc-icon">🏢</div>
+                                <div class="toc-text">Impôts des sociétés</div>
+                            </a>
+                            <a href="#mortgage-help" class="toc-item">
+                                <div class="toc-icon">🏠</div>
+                                <div class="toc-text">Prêt hypothécaire</div>
+                            </a>
+                            <a href="#droitMutation-help" class="toc-item">
+                                <div class="toc-icon">🎁</div>
+                                <div class="toc-text">Droits de mutation</div>
+                            </a>
+                            <a href="#budget-help" class="toc-item">
+                                <div class="toc-icon">📊</div>
+                                <div class="toc-text">Budget personnel</div>
+                            </a>
+                            <a href="#celi-help" class="toc-item">
+                                <div class="toc-icon">💰</div>
+                                <div class="toc-text">CELI</div>
+                            </a>
+                        </div>
                     </div>
-
-                    <!-- Modifier les sections existantes pour ajouter les IDs -->
-                    <section id="budget-help" class="help-section mb-5">
-                        <h2 class="text-dark mb-4">📊 Budget personnel</h2>
-                        
-                        <h5 class="mt-4 text-dark">Qu'est-ce qu'un budget?</h5>
-                        <p>Un budget est un outil de planification financière qui vous permet de :</p>
-                        <ul>
-                            <li>Suivre vos revenus et dépenses</li>
-                            <li>Identifier où va votre argent</li>
-                            <li>Planifier vos objectifs financiers</li>
-                            <li>Éviter les dépenses excessives</li>
-                        </ul>
-
-                        <div class="alert alert-info mt-4">
-                            <strong>💡 Conseils pour une épargne efficace :</strong>
-                            <ul class="mt-3">
-                                <li><strong>Fonds d'urgence</strong>
-                                    <ul>
-                                        <li>Maintenez 3-6 mois de dépenses en liquidités</li>
-                                        <li>Placez dans un compte facilement accessible</li>
-                                        <li>Utilisez notre calculateur de budget pour déterminer le montant idéal</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Remboursement des dettes</strong>
-                                    <ul>
-                                        <li>Priorisez les dettes à haut taux d'intérêt</li>
-                                        <li>Établissez un plan de remboursement systématique</li>
-                                        <li>Consultez notre calculateur de prêt maison pour optimiser vos paiements hypothécaires</li>
-                                    </ul>
-                                </li>
-                                <li><strong>Épargne long terme</strong>
-                                    <ul>
-                                        <li>Investissez régulièrement dans votre CELI et REER</li>
-                                        <li>Profitez de la puissance des intérêts composés</li>
-                                        <li>Explorez nos calculateurs CELI et intérêts composés pour planifier votre stratégie</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <p class="mb-0">
-                                <small>
-                                    Utilisez nos différents calculateurs pour créer une stratégie d'épargne personnalisée 
-                                    qui correspond à vos objectifs financiers.
-                                </small>
-                            </p>
-                        </div>
-
-                    </section>
-
-                    <!-- CELI -->
-                    <section id="celi-help" class="help-section mb-5">
-                        <h2 class="text-dark mb-4">💰 CÉLI (Compte d'Épargne Libre d'Impôt)</h2>
-                        
-                        <h5 class="mt-4 text-dark">Qu'est-ce qu'un CÉLI?</h5>
-                        <p>Le CÉLI est un compte d'investissement qui permet de :</p>
-                        <ul>
-                            <li>Faire fructifier votre argent à l'abri de l'impôt.</li>
-                            <li>Retirer des fonds en tout temps sans pénalité.</li>
-                            <li>Investir dans différents produits de placement (actions, obligations, CPG).</li>
-                        </ul>
-
-                        <h5 class="mt-4 text-dark">Droits de cotisation annuels</h5>
-                        <div class="table-responsive">
-                            <table class="table table-bordered">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>Années</th>
-                                        <th>Limite annuelle</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>2009-2012</td><td>5 000$</td></tr>
-                                    <tr><td>2013-2014</td><td>5 500$</td></tr>
-                                    <tr><td>2015</td><td>10 000$</td></tr>
-                                    <tr><td>2016-2018</td><td>5 500$</td></tr>
-                                    <tr><td>2019-2023</td><td>6 000$</td></tr>
-                                    <tr><td>2024</td><td>7 000$</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <h5 class="mt-4 text-dark">Comment calculer vos droits de cotisation?</h5>
-                        <p>Vos droits de cotisation totaux = A + B - C + D, où :</p>
-                        <ul class="mt-3">
-                            <li><strong>A</strong> : Droits inutilisés des années précédentes</li>
-                            <li><strong>B</strong> : Nouveaux droits de l'année en cours</li>
-                            <li><strong>C</strong> : Cotisations effectuées</li>
-                            <li><strong>D</strong> : Retraits des années précédentes</li>
-                        </ul>
-
-                        <div class="alert alert-warning mt-4">
-                            <strong>⚠️ Important :</strong>
-                            <ul class="mt-3">
-                                <li>Les droits commencent à s'accumuler dès vos 18 ans</li>
-                                <li>Une cotisation excédentaire entraîne une pénalité de 1% par mois</li>
-                                <li>Les pertes dans un CELI ne peuvent pas être déduites</li>
-                            </ul>
-                        </div>
-
-                        <h5 class="mt-4 text-dark">Exemple pratique</h5>
-                        <div class="card">
-                            <div class="card-body">
-                                <p><strong>Scénario :</strong> Personne née en 1990</p>
-                                <ul>
-                                    <li>A eu 18 ans en 2008</li>
-                                    <li>Droits commencent en 2009</li>
-                                    <li>En 2024, ses droits totaux sont :
-                                        <ul>
-                                            <li>2009-2012 : 4 × 5 000$ = 20 000$</li>
-                                            <li>2013-2014 : 2 × 5 500$ = 11 000$</li>
-                                            <li>2015 : 10 000$</li>
-                                            <li>2016-2018 : 3 × 5 500$ = 16 500$</li>
-                                            <li>2019-2023 : 5 × 6 000$ = 30 000$</li>
-                                            <li>2024 : 7 000$</li>
-                                            <li><strong>Total : 94 500$</strong></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
 
                     <!-- Intérêts Composés -->
                     <section id="compound-help" class="help-section mb-5">
@@ -698,6 +631,7 @@
                                     <li>Commencer le plus tôt possible est la clé</li>
                                 </ul>
                             </li>
+                            <br>
                             <li><strong>Taux de rendement</strong>
                                 <ul>
                                     <li>Un taux plus élevé accélère la croissance</li>
@@ -705,6 +639,7 @@
                                     <li>Attention aux frais de gestion</li>
                                 </ul>
                             </li>
+                            <br>
                             <li><strong>Fréquence des contributions</strong>
                                 <ul>
                                     <li>Des versements réguliers évitent la tentation de 'timer' le marché</li>
@@ -742,6 +677,76 @@
                             <p><small>Cette comparaison démontre l'importance de commencer tôt : Sophie investit moins au total que Marc mais termine avec davantage grâce au temps et aux intérêts composés.</small></p>
                         </div>
 
+                    </section>
+
+                    <!-- Impôts personnels -->
+                    <section id="tax-help" class="help-section mb-5">
+                        <h2 class="text-dark mb-4">📑 Impôts des particuliers</h2>
+                        
+                        <h5 class="mt-4 text-dark">Types de revenus imposables</h5>
+                        <ul>
+                            <li><strong>Revenu d'emploi</strong> - Salaires, commissions et avantages</li>
+                            <li><strong>Gains en capital</strong> - Profits sur investissements (50% imposable)</li>
+                            <li><strong>Dividendes</strong> - Distributions des sociétés</li>
+                            <li><strong>Revenus d'entreprise/biens</strong> - Travail autonome et location</li>
+                        </ul>
+
+                        <h5 class="mt-4 text-dark">Traitement spécial des revenus</h5>
+                        <h6>Gains en capital</h6>
+                        <ul>
+                            <li>Seulement 50% du gain est imposable</li>
+                            <li>Exemple : Gain de 10 000$ = 5 000$ imposable</li>
+                        </ul>
+
+                        <h6>Dividendes déterminés</h6>
+                        <ul>
+                            <li>Majoration de 38%</li>
+                            <li>Crédit d'impôt pour dividendes</li>
+                        </ul>
+
+                        <h6>Dividendes non déterminés</h6>
+                        <ul>
+                            <li>Majoration de 15%</li>
+                            <li>Crédit d'impôt pour dividendes</li>
+                        </ul>
+
+                        <h5 class="mt-4 text-dark">Exemple de calcul complet</h5>
+                        <div class="card">
+                            <div class="card-body">
+                                <p><strong>Scénario :</strong></p>
+                                <ul>
+                                    <li>Revenu d'emploi : 75 000$</li>
+                                    <li>Gains en capital : 10 000$ (5 000$ imposable)</li>
+                                    <li>Dividendes déterminés : 2 000$ (2 760$ imposable)</li>
+                                    <li>Revenu total imposable : 82 760$</li>
+                                    <li>Calcul :
+                                        <ul>
+                                            <li>Impôt fédéral (avant abattement) : ≈ 14 500$</li>
+                                            <li>Abattement du Québec (16.5%) : ≈ 2 390$</li>
+                                            <li>Impôt provincial : ≈ 15 000$</li>
+                                            <li>Total des impôts : ≈ 27 110$</li>
+                                            <li>Taux effectif : ≈ 32.8%</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning mt-4">
+                            <strong>⚠️ Important :</strong>
+                            <ul class="mt-3">
+                                <li>Ces calculs sont des estimations</li>
+                                <li>Ne tiennent pas compte des crédits et déductions personnels</li>
+                                <li>Consultez un professionnel pour votre situation spécifique</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Impôts corporatifs -->
+                    <section id="taxCorporate-help" class="help-section mb-5">
+                        <h2 class="text-dark mb-4">🏢 Impôts des sociétés</h2>
+                        
+                        <p class="text-center mb-4 text-muted">[En cours de développement...]</p>
                     </section>
 
                     <!-- Prêt Hypothécaire -->
@@ -854,68 +859,134 @@
                         </div>
                     </section>
 
-                    <!-- Impôts -->
-                    <section id="tax-help" class="help-section mb-5">
-                        <h2 class="text-dark mb-4">📑 Impôts des particuliers</h2>
+                    <!-- Droit de mutation -->
+                    <section id="droitMutation-help" class="help-section mb-5">
+                        <h2 class="text-dark mb-4">🎁 Droit de mutation</h2>
                         
-                        <h5 class="mt-4 text-dark">Types de revenus imposables</h5>
+                        <p class="text-center mb-4 text-muted">[En cours de développement...]</p>
+                    </section>
+                    
+                    <!-- Budget -->
+                    <section id="budget-help" class="help-section mb-5">
+                        <h2 class="text-dark mb-4">📊 Budget personnel</h2>
+                        
+                        <h5 class="mt-4 text-dark">Qu'est-ce qu'un budget?</h5>
+                        <p>Un budget est un outil de planification financière qui vous permet de :</p>
                         <ul>
-                            <li><strong>Revenu d'emploi</strong> - Salaires, commissions et avantages</li>
-                            <li><strong>Gains en capital</strong> - Profits sur investissements (50% imposable)</li>
-                            <li><strong>Dividendes</strong> - Distributions des sociétés</li>
-                            <li><strong>Revenus d'entreprise/biens</strong> - Travail autonome et location</li>
+                            <li>Suivre vos revenus et dépenses</li>
+                            <li>Identifier où va votre argent</li>
+                            <li>Planifier vos objectifs financiers</li>
+                            <li>Éviter les dépenses excessives</li>
                         </ul>
 
-                        <h5 class="mt-4 text-dark">Traitement spécial des revenus</h5>
-                        <h6>Gains en capital</h6>
+                        <div class="alert alert-info mt-4">
+                            <strong>💡 Conseils pour une épargne efficace :</strong>
+                            <ul class="mt-3">
+                                <li><strong>Fonds d'urgence</strong>
+                                    <ul>
+                                        <li>Maintenez 3-6 mois de dépenses en liquidités</li>
+                                        <li>Placez dans un compte facilement accessible</li>
+                                        <li>Utilisez notre calculateur de budget pour déterminer le montant idéal</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Remboursement des dettes</strong>
+                                    <ul>
+                                        <li>Priorisez les dettes à haut taux d'intérêt</li>
+                                        <li>Établissez un plan de remboursement systématique</li>
+                                        <li>Consultez notre calculateur de prêt maison pour optimiser vos paiements hypothécaires</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Épargne long terme</strong>
+                                    <ul>
+                                        <li>Investissez régulièrement dans votre CELI et REER</li>
+                                        <li>Profitez de la puissance des intérêts composés</li>
+                                        <li>Explorez nos calculateurs CELI et intérêts composés pour planifier votre stratégie</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p class="mb-0">
+                                <small>
+                                    Utilisez nos différents calculateurs pour créer une stratégie d'épargne personnalisée 
+                                    qui correspond à vos objectifs financiers.
+                                </small>
+                            </p>
+                        </div>
+
+                    </section>
+
+                    <!-- CELI -->
+                    <section id="celi-help" class="help-section mb-5">
+                        <h2 class="text-dark mb-4">💰 CÉLI (Compte d'Épargne Libre d'Impôt)</h2>
+                        
+                        <h5 class="mt-4 text-dark">Qu'est-ce qu'un CÉLI?</h5>
+                        <p>Le CÉLI est un compte d'investissement qui permet de :</p>
                         <ul>
-                            <li>Seulement 50% du gain est imposable</li>
-                            <li>Exemple : Gain de 10 000$ = 5 000$ imposable</li>
+                            <li>Faire fructifier votre argent à l'abri de l'impôt.</li>
+                            <li>Retirer des fonds en tout temps sans pénalité.</li>
+                            <li>Investir dans différents produits de placement (actions, obligations, CPG).</li>
                         </ul>
 
-                        <h6>Dividendes déterminés</h6>
-                        <ul>
-                            <li>Majoration de 38%</li>
-                            <li>Crédit d'impôt pour dividendes</li>
+                        <h5 class="mt-4 text-dark">Droits de cotisation annuels</h5>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Années</th>
+                                        <th>Limite annuelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>2009-2012</td><td>5 000$</td></tr>
+                                    <tr><td>2013-2014</td><td>5 500$</td></tr>
+                                    <tr><td>2015</td><td>10 000$</td></tr>
+                                    <tr><td>2016-2018</td><td>5 500$</td></tr>
+                                    <tr><td>2019-2023</td><td>6 000$</td></tr>
+                                    <tr><td>2024-2025</td><td>7 000$</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h5 class="mt-4 text-dark">Comment calculer vos droits de cotisation?</h5>
+                        <p>Vos droits de cotisation totaux = A + B - C + D, où :</p>
+                        <ul class="mt-3">
+                            <li><strong>A</strong> : Droits inutilisés des années précédentes</li>
+                            <li><strong>B</strong> : Nouveaux droits de l'année en cours</li>
+                            <li><strong>C</strong> : Cotisations effectuées</li>
+                            <li><strong>D</strong> : Retraits des années précédentes</li>
                         </ul>
 
-                        <h6>Dividendes non déterminés</h6>
-                        <ul>
-                            <li>Majoration de 15%</li>
-                            <li>Crédit d'impôt pour dividendes</li>
-                        </ul>
+                        <div class="alert alert-warning mt-4">
+                            <strong>⚠️ Important :</strong>
+                            <ul class="mt-3">
+                                <li>Les droits commencent à s'accumuler dès vos 18 ans</li>
+                                <li>Une cotisation excédentaire entraîne une pénalité de 1% par mois</li>
+                                <li>Les pertes dans un CELI ne peuvent pas être déduites</li>
+                            </ul>
+                        </div>
 
-                        <h5 class="mt-4 text-dark">Exemple de calcul complet</h5>
+                        <h5 class="mt-4 text-dark">Exemple pratique</h5>
                         <div class="card">
                             <div class="card-body">
-                                <p><strong>Scénario :</strong></p>
+                                <p><strong>Scénario :</strong> Personne née en 1990</p>
                                 <ul>
-                                    <li>Revenu d'emploi : 75 000$</li>
-                                    <li>Gains en capital : 10 000$ (5 000$ imposable)</li>
-                                    <li>Dividendes déterminés : 2 000$ (2 760$ imposable)</li>
-                                    <li>Revenu total imposable : 82 760$</li>
-                                    <li>Calcul :
+                                    <li>A eu 18 ans en 2008</li>
+                                    <li>Droits commencent en 2009</li>
+                                    <li>En 2025, ses droits totaux sont :
                                         <ul>
-                                            <li>Impôt fédéral (avant abattement) : ≈ 14 500$</li>
-                                            <li>Abattement du Québec (16.5%) : ≈ 2 390$</li>
-                                            <li>Impôt provincial : ≈ 15 000$</li>
-                                            <li>Total des impôts : ≈ 27 110$</li>
-                                            <li>Taux effectif : ≈ 32.8%</li>
+                                            <li>2009-2012 : 4 × 5 000$ = 20 000$</li>
+                                            <li>2013-2014 : 2 × 5 500$ = 11 000$</li>
+                                            <li>2015 : 10 000$</li>
+                                            <li>2016-2018 : 3 × 5 500$ = 16 500$</li>
+                                            <li>2019-2023 : 5 × 6 000$ = 30 000$</li>
+                                            <li>2024-2025 : 2 × 7 000$ = 14 000$</li>
+                                            <li><strong>Total : 94 500$</strong></li>
                                         </ul>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-
-                        <div class="alert alert-warning mt-4">
-                            <strong>⚠️ Important :</strong>
-                            <ul class="mt-3">
-                                <li>Ces calculs sont des estimations</li>
-                                <li>Ne tiennent pas compte des crédits et déductions personnels</li>
-                                <li>Consultez un professionnel pour votre situation spécifique</li>
-                            </ul>
-                        </div>
                     </section>
+
                 </div>
             </div>
         </div>

@@ -7,85 +7,91 @@ function formatNumber(num) {
 }
 
 function calculateFederalTax(income) {
-    let logs = [`Calcul des impôts fédéraux pour un revenu de $${formatNumber(income)}.`];
+    let logs = [];
     let tax = 0;
-    
-    if (income <= 55867) {
-        tax = income * 0.15;
-        logs.push(`Le revenu jusqu'à $55,867 est imposé à 15% : $${formatNumber(tax)}`);
-    } else {
-        let initialTax = 55867 * 0.15;
-        tax = initialTax;
-        logs.push(`Les premiers $55,867 sont imposés à 15% : $${formatNumber(initialTax)}`);
-        
-        if (income <= 111733) {
-            tax += (income - 55867) * 0.205;
-            logs.push(`Le revenu de $55,867 à $111,733 est imposé à 20.5% : $${formatNumber((income - 55867) * 0.205)}`);
-        } else {
-            let middleTax = (111733 - 55867) * 0.205;
-            tax += middleTax;
-            logs.push(`Les $55,866 suivants sont imposés à 20.5% : $${formatNumber(middleTax)}`);
-            
-            if (income <= 173205) {
-                tax += (income - 111733) * 0.26;
-                logs.push(`Le revenu de $111,733 à $173,205 est imposé à 26% : $${formatNumber((income - 111733) * 0.26)}`);
-            } else {
-                let higherTax = (173205 - 111733) * 0.26;
-                tax += higherTax;
-                logs.push(`Les $61,472 suivants sont imposés à 26% : $${formatNumber(higherTax)}`);
-                
-                if (income <= 246752) {
-                    tax += (income - 173205) * 0.29;
-                    logs.push(`Le revenu de $173,205 à $246,752 est imposé à 29% : $${formatNumber((income - 173205) * 0.29)}`);
-                } else {
-                    let highestTax = (246752 - 173205) * 0.29;
-                    tax += highestTax;
-                    tax += (income - 246752) * 0.33;
-                    logs.push(`Les $73,547 suivants sont imposés à 29% : $${formatNumber(highestTax)}`);
-                    logs.push(`Le revenu supérieur à $246,752 est imposé à 33% : $${formatNumber((income - 246752) * 0.33)}`);
+    let subTotal = 0;
+
+    // Premier palier (0 à 57 375$)
+    const firstBracketAmount = Math.min(income, 57375);
+    const firstBracketTax = firstBracketAmount * 0.15;
+    subTotal += firstBracketTax;
+    logs.push(`De 0$ à 57,375$ (15%) : ${formatNumber(firstBracketAmount)}$ × 15% = ${formatNumber(firstBracketTax)}$`);
+
+    if (income > 57375) {
+        // Deuxième palier (57 375$ à 114 750$)
+        const secondBracketAmount = Math.min(income - 57375, 114750 - 57375);
+        const secondBracketTax = secondBracketAmount * 0.205;
+        subTotal += secondBracketTax;
+        logs.push(`De 57,375$ à 114,750$ (20.5%) : ${formatNumber(secondBracketAmount)}$ × 20.5% = ${formatNumber(secondBracketTax)}$`);
+
+        if (income > 114750) {
+            // Troisième palier (114 750$ à 177 882$)
+            const thirdBracketAmount = Math.min(income - 114750, 177882 - 114750);
+            const thirdBracketTax = thirdBracketAmount * 0.26;
+            subTotal += thirdBracketTax;
+            logs.push(`De 114,750$ à 177,882$ (26%) : ${formatNumber(thirdBracketAmount)}$ × 26% = ${formatNumber(thirdBracketTax)}$`);
+
+            if (income > 177882) {
+                // Quatrième palier (177 882$ à 253 414$)
+                const fourthBracketAmount = Math.min(income - 177882, 253414 - 177882);
+                const fourthBracketTax = fourthBracketAmount * 0.29;
+                subTotal += fourthBracketTax;
+                logs.push(`De 177,882$ à 253,414$ (29%) : ${formatNumber(fourthBracketAmount)}$ × 29% = ${formatNumber(fourthBracketTax)}$`);
+
+                if (income > 253414) {
+                    // Cinquième palier (253 414$ et plus)
+                    const fifthBracketAmount = income - 253414;
+                    const fifthBracketTax = fifthBracketAmount * 0.33;
+                    subTotal += fifthBracketTax;
+                    logs.push(`Plus de 253,414$ (33%) : ${formatNumber(fifthBracketAmount)}$ × 33% = ${formatNumber(fifthBracketTax)}$`);
                 }
             }
         }
     }
     
-    let abatedTax = tax - (tax * 0.165);
-    logs.push(`Application de l'abattement de 16.5%, réduction de l'impôt de $${formatNumber(tax * 0.165)} à $${formatNumber(abatedTax)}.`);
-    return [abatedTax, logs];
+    const abatement = subTotal * 0.165;
+    const finalTax = subTotal - abatement;
+    logs.push(`Abattement du Québec (16.5%) : (${formatNumber(abatement)}$)`);
+
+    return [finalTax, logs];
 }
 
 function calculateQuebecTax(income) {
-    let logs = [`Calcul des impôts du Québec pour un revenu de $${formatNumber(income)}.`];
+    let logs = [];
     let tax = 0;
-    
-    if (income <= 51780) {
-        tax = income * 0.14;
-        logs.push(`Le revenu jusqu'à $51,780 est imposé à 14% : $${formatNumber(tax)}`);
-    } else {
-        let initialTax = 51780 * 0.14;
-        tax = initialTax;
-        logs.push(`Les premiers $51,780 sont imposés à 14% : $${formatNumber(initialTax)}`);
-        
-        if (income <= 103545) {
-            tax += (income - 51780) * 0.19;
-            logs.push(`Le revenu de $51,780 à $103,545 est imposé à 19% : $${formatNumber((income - 51780) * 0.19)}`);
-        } else {
-            let middleTax = (103545 - 51780) * 0.19;
-            tax += middleTax;
-            logs.push(`Les $51,765 suivants sont imposés à 19% : $${formatNumber(middleTax)}`);
-            
-            if (income <= 126000) {
-                tax += (income - 103545) * 0.24;
-                logs.push(`Le revenu de $103,545 à $126,000 est imposé à 24% : $${formatNumber((income - 103545) * 0.24)}`);
-            } else {
-                let higherTax = (126000 - 103545) * 0.24;
-                tax += higherTax;
-                tax += (income - 126000) * 0.2575;
-                logs.push(`Les $22,455 suivants sont imposés à 24% : $${formatNumber(higherTax)}`);
-                logs.push(`Le revenu supérieur à $126,000 est imposé à 25.75% : $${formatNumber((income - 126000) * 0.2575)}`);
+    let subTotal = 0;
+
+    // Premier palier (0 à 53 255$)
+    const firstBracketAmount = Math.min(income, 53255);
+    const firstBracketTax = firstBracketAmount * 0.14;
+    subTotal += firstBracketTax;
+    logs.push(`De 0$ à 53,255$ (14%) : ${formatNumber(firstBracketAmount)}$ × 14% = ${formatNumber(firstBracketTax)}$`);
+
+    if (income > 53255) {
+        // Deuxième palier (53 255$ à 106 495$)
+        const secondBracketAmount = Math.min(income - 53255, 106495 - 53255);
+        const secondBracketTax = secondBracketAmount * 0.19;
+        subTotal += secondBracketTax;
+        logs.push(`De 53,255$ à 106,495$ (19%) : ${formatNumber(secondBracketAmount)}$ × 19% = ${formatNumber(secondBracketTax)}$`);
+
+        if (income > 106495) {
+            // Troisième palier (106 495$ à 129 590$)
+            const thirdBracketAmount = Math.min(income - 106495, 129590 - 106495);
+            const thirdBracketTax = thirdBracketAmount * 0.24;
+            subTotal += thirdBracketTax;
+            logs.push(`De 106,495$ à 129,590$ (24%) : ${formatNumber(thirdBracketAmount)}$ × 24% = ${formatNumber(thirdBracketTax)}$`);
+
+            if (income > 129590) {
+                // Quatrième palier (129 590$ et plus)
+                const fourthBracketAmount = income - 129590;
+                const fourthBracketTax = fourthBracketAmount * 0.2575;
+                subTotal += fourthBracketTax;
+                logs.push(`Plus de 129,590$ (25.75%) : ${formatNumber(fourthBracketAmount)}$ × 25.75% = ${formatNumber(fourthBracketTax)}$`);
             }
         }
     }
-    return [tax, logs];
+
+    return [subTotal, logs];
 }
 
 function calculateTotalTax() {
@@ -107,11 +113,7 @@ function calculateTotalTax() {
     });
 
     let taxableCapitalGains;
-    if (capitalGains <= 250000) {
-        taxableCapitalGains = capitalGains * 0.50;
-    } else {
-        taxableCapitalGains = 250000 * 0.50 + (capitalGains - 250000) * 0.6667;
-    }
+    taxableCapitalGains = capitalGains * 0.50;
 
     const totalIncome = employmentIncome + 
                         taxableCapitalGains + 
@@ -169,7 +171,6 @@ function calculateTotalTax() {
             marginalTaxRate
         );
 
-        updateTaxChart(federalTax, quebecTax, totalIncome);
     } catch (error) {
         console.error("Error during tax calculation:", error);
         document.getElementById('result').innerHTML = 'Une erreur est survenue lors du calcul.';
@@ -192,7 +193,10 @@ function displayTaxResults(
     effectiveTaxRate,
     marginalTaxRate
 ) {
-    // Create result container
+    // Get the logs from tax calculations
+    const [_, federalLogs] = calculateFederalTax(totalIncome);
+    const [__, quebecLogs] = calculateQuebecTax(totalIncome);
+
     const resultHTML = `
         <div class="result">
             <h4>Résultats du calcul d'impôts</h4>
@@ -224,7 +228,7 @@ function displayTaxResults(
             <div class="result-group">
                 <h5 class="mb-3">Revenus imposables ajustés</h5>
                 <div class="result-row">
-                    <span class="result-label">Gains en capital imposables (${capitalGains > 250000 ? '66.67%' : '50%'})</span>
+                    <span class="result-label">Gains en capital imposables (50%)</span>
                     <span class="result-value">${formatCurrency(taxableCapitalGains)}</span>
                 </div>
                 <div class="result-row">
@@ -265,6 +269,20 @@ function displayTaxResults(
                 </div>
             </div>
 
+            <div class="result-group">
+                <h5 class="mb-3">Détails du calcul</h5>
+                <div class="calculation-logs">
+                    <div class="log-section">
+                        <h6>Calcul de l'impôt fédéral</h6>
+                        ${federalLogs.map(log => `<div class="log-entry">${log}</div>`).join('')}
+                    </div>
+                    <div class="log-section">
+                        <h6>Calcul de l'impôt provincial</h6>
+                        ${quebecLogs.map(log => `<div class="log-entry">${log}</div>`).join('')}
+                    </div>
+                </div>
+            </div>
+
             <div class="result-total">
                 <div class="result-row">
                     <span class="result-label">Total des impôts</span>
@@ -292,20 +310,20 @@ function displayTaxResults(
 
 function getFederalMarginalRate(income) {
     let rate;
-    if (income <= 55867) rate = 15;
-    else if (income <= 111733) rate = 20.5;
-    else if (income <= 173205) rate = 26;
-    else if (income <= 246752) rate = 29;
+    if (income <= 57375) rate = 15;
+    else if (income <= 114750) rate = 20.5;
+    else if (income <= 177882) rate = 26;
+    else if (income <= 253414) rate = 29;
     else rate = 33;
     
-    // Apply the 16.5% reduction
+    // Application de l'abattement de 16,5% pour les résidents du Québec
     return rate * (1 - 0.165);
 }
 
 function getQuebecMarginalRate(income) {
-    if (income <= 51780) return 14;
-    if (income <= 103545) return 19;
-    if (income <= 126000) return 24;
+    if (income <= 53255) return 14;
+    if (income <= 106495) return 19;
+    if (income <= 129590) return 24;
     return 25.75;
 }
 
@@ -316,38 +334,6 @@ function resetFields() {
     document.getElementById('undeterminedDividend').value = '';
     document.getElementById('propertyIncome').value = '';
     document.querySelector('#Tax .calculator-result').innerHTML = '';
-}
-
-function updateTaxChart(federalTax, quebecTax, totalIncome) {
-    if (window.taxChart) {
-        window.taxChart.destroy();
-    }
-    
-    const ctx = document.getElementById('taxChart').getContext('2d');
-    const netIncome = totalIncome - federalTax - quebecTax;
-    
-    window.taxChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Revenu net', 'Impôt fédéral', 'Impôt provincial'],
-            datasets: [{
-                data: [netIncome, federalTax, quebecTax],
-                backgroundColor: ['#4BC0C0', '#FF6384', '#36A2EB']
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Répartition du revenu total'
-                },
-                legend: {
-                    position: 'right'
-                }
-            }
-        }
-    });
 }
 
 // Continue in next message due to length... 
